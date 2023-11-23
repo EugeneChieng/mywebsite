@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="game-container">
+    <span class="countdown">00:00</span>
+    <span class="points">000</span>
+    <div class="grid-container" id="grid">
+        <div draggable="true" class="grid-item" id="box1">1</div>
+        <div draggable="true" class="grid-item" id="box2">2</div>
+        <div draggable="true" class="grid-item" id="box3">3</div>
+        <div draggable="true" class="grid-item" id="box4">4</div>
+        <div draggable="true" class="grid-item" id="box5">5</div>
+        <div draggable="true" class="grid-item" id="box6">6</div>
+        <div draggable="true" class="grid-item" id="box7">7</div>
+        <div draggable="true" class="grid-item" id="box8">8</div>
+        <div draggable="true" class="grid-item" id="box9">9</div>
+      </div>
+
+      <button class="completebtn" onclick="levelNum++; completeRound(); startGame()">NEXT</button>
+    </div>
+</body>
+</html>

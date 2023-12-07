@@ -9,8 +9,7 @@
 </head>
 <body>
     <div class="game-container">
-    <span class="countdown">00:00</span>
-    <span class="points">000</span>
+    
     <div class="grid-container" id="grid">
         <div draggable="true" class="grid-item" id="box1">1</div>
         <div draggable="true" class="grid-item" id="box2">2</div>
@@ -22,8 +21,28 @@
         <div draggable="true" class="grid-item" id="box8">8</div>
         <div draggable="true" class="grid-item" id="box9">9</div>
       </div>
-
+      <div class="controlInterface">
+        <div class="score">
+            <span class="points">000</span>
+            <span class="countdown">00:00</span>
+        </div>
+        
+        <div class="lvcontrol">
       <button class="completebtn" onclick="levelNum++; completeRound(); startGame()">NEXT</button>
+      <span class="lvcount">0/0</span>
     </div>
+
+    </div>
+    </div>
+
+    <dialog class="final_result" data-modal>
+        <span class="resulttitle">🎉Good game</span>
+        <span class="congrat">Your team have won</span>
+        <span class="totalpoint">10🎖️</span>
+        <span class="totalgamepoint">11899</span>
+    </dialog>
+    <dialog class="startbtncon">
+        <button class="startbtn">START</button>
+    </dialog>
 </body>
 </html>

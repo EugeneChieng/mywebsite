@@ -236,7 +236,7 @@ const jsonData2 = [
   }
 ];
 
-let levelNum = 0 // LEVEL NUMBER
+let levelNum = 11 // LEVEL NUMBER
 
 const jsonData = [
   // TEST
@@ -323,7 +323,7 @@ const jsonData = [
   {
     imageURL: 'res/lv_anim.jpg',
     splittingVariable: 5, // Adjust the splitting variable as needed
-    time: 150,
+    time: 120,
     prep: 60
   },
 
@@ -331,7 +331,7 @@ const jsonData = [
   {
     imageURL: 'res/lv_brands.png',
     splittingVariable: 5, // Adjust the splitting variable as needed
-    time: 150,
+    time: 120,
     prep: 60
   }
 ];

@@ -236,7 +236,7 @@ const jsonData2 = [
   }
 ];
 
-let levelNum = 11 // LEVEL NUMBER
+let levelNum = 0 // LEVEL NUMBER
 
 const jsonData = [
   // TEST

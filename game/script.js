@@ -247,14 +247,6 @@ const jsonData = [
     prep: 30
   },
 
-  // TEST 2
-  {
-    imageURL: 'res/lv_test.png',
-    splittingVariable: 3, // Adjust the splitting variable as needed
-    time: 60,
-    prep: 30
-  },
-
    // PENG
    {
     imageURL: 'res/lv_peng.png',
@@ -263,13 +255,6 @@ const jsonData = [
     prep: 30
   },
 
-  // SCHOOL LOGO
-  {
-    imageURL: 'res/lv_schoollogo.png',
-    splittingVariable: 4, // Adjust the splitting variable as needed
-    time: 90,
-    prep: 30
-  },
   // COLOURS
   {
     imageURL: 'res/lv_colour.png',
@@ -286,6 +271,38 @@ const jsonData = [
     prep: 45
   },
 
+    // CARS
+    {
+      imageURL: 'res/lv_cars.png',
+      splittingVariable: 5, // Adjust the splitting variable as needed
+      time: 120,
+      prep: 60
+    },
+
+  // MUSIC
+  {
+    imageURL: 'res/lv_music.png',
+    splittingVariable: 3, // Adjust the splitting variable as needed
+    time: 120,
+    prep: 75
+  },
+
+  // TEST 2
+  {
+    imageURL: 'res/lv_test.png',
+    splittingVariable: 3, // Adjust the splitting variable as needed
+    time: 60,
+    prep: 30
+  },
+
+  // SCHOOL LOGO
+  {
+    imageURL: 'res/lv_schoollogo.png',
+    splittingVariable: 4, // Adjust the splitting variable as needed
+    time: 75,
+    prep: 30
+  },
+
   // SPORTS
   {
     imageURL: 'res/lv_sports.jpg',
@@ -293,13 +310,13 @@ const jsonData = [
     time: 90,
     prep: 45
   },
-
-  // CARS
+  
+  // CARTOON
   {
-    imageURL: 'res/lv_cars.png',
-    splittingVariable: 5, // Adjust the splitting variable as needed
+    imageURL: 'res/lv_cartoon.jpg',
+    splittingVariable: 4, // Adjust the splitting variable as needed
     time: 90,
-    prep: 45
+    prep: 60
   },
 
   // ANIMALS

@@ -67,7 +67,7 @@ function populateArticle(article) {
       <h1>${title}</h1>
       <p class="tripartition__about__paragraph">${content}</p>
       <div class="tripartition__article__controls">
-        <button class="tripartition__about__readmore" onclick="window.location.href='/article/?id=${id}'">LEARN MORE</button>
+        <button class="tripartition__about__readmore" onclick="window.location.href='./article/?id=${id}'">LEARN MORE</button>
         <span class="tripartition__about__date">
         <span class="material-symbols-outlined">
 calendar_month

@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;600;700;800&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dimen-nav-height: 70px;
+    --dimen-nav-wrapper-height: 5px; /* Height of nav bottom border */
+    --dimen-banner-height: 250px;
+    --dimen-dipartition-height: clamp(75px, 15vh, 150px); /* Height of visi misi */
+    --dimen-font-banner-top-content: clamp(0.75rem, 1.5vw, 1.6rem); /* Font size of top banner content */
+    --dimen-banner-top-content-width: clamp(55%, 0.55vw, 70%);
+
+    --layer-background-ineligible: 10;
+    --layer-foreground-main: 20;
+    --layer-foreground-super: 99;
+
+    --font-default: 'Noto Sans';
+
+    --color-theme-red: #da3a3a;
+    --color-theme-blue: #0093dd;
+    --color-theme-yellow: #f8c301;
+
+    --color-title-feed: #dcdcdc;
+
+    --orientation-orgchart-display: row;
+}
+
+@media only screen and (max-width: 650px) {
+    :root {
+        --orientation-orgchart-display: column;
+    }
+  }
+
+.nav__top {
+    /* Dimension */
+    width: 100%;
+    height: var(--dimen-nav-height);
+
+    /* Position */
+    position: fixed;
+    top: 0;
+
+    /* Styling */
+    background-color: white;
+    opacity: 0.95;
+    color: black;
+    font-size: clamp(20px, 4vw, 1.45rem);
+    font-family: var(--font-default);
+    font-weight: 600;
+    z-index: var(--layer-foreground-super);
+}
+
+.nav__top__wrapper {
+    /* Dimension */
+    height: inherit;
+    width: inherit;
+
+    /* Position */
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.nav__top__wrapper::after {
+    content: "";
+
+    /* Dimension */
+    height: var(--dimen-nav-wrapper-height);
+    width: 100%;
+
+    /* Position */
+    position: absolute;
+    bottom: calc(0px - var(--dimen-nav-wrapper-height));
+    z-index: calc(var(--layer-foreground-super) + 1);
+
+    /* Styling */
+    background-image: linear-gradient(90deg, var(--color-theme-red) 0%, 
+        var(--color-theme-red) 33%, 
+        var(--color-theme-yellow) 33%, 
+        var(--color-theme-yellow) 66%, 
+        var(--color-theme-blue) 66%, 
+        var(--color-theme-blue) 100%);
+}
+
+.nav__top__wrapper > a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav__top__logo {
+    /* Position */
+    margin: 20px;
+
+    /* Dimension */
+    height: calc(var(--dimen-nav-height) - 15%);
+
+    cursor: pointer;
+}
+
+/* Banner for search */
+.banner__top {
+    /* Dimension */
+    margin-top: calc(var(--dimen-nav-height) + var(--dimen-nav-wrapper-height));
+    height: 20rem;
+    width: 100%;
+
+    /* Position */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Styling */
+    font-family: var(--font-default);
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #424242 10px ), repeating-linear-gradient( rgb(54, 54, 54), #010101 );
+
+    /* opacity: 0.8;
+    background-attachment: fixed;
+    background-image:  repeating-radial-gradient( circle at 10rem 20rem, transparent 0, transparent 9px, rgb(24, 24, 24) 9px, black 10px ), linear-gradient(45deg, #1d1d1d 20%, rgb(54, 54, 54) ); */
+    /* background: linear-gradient(135deg, #00000055 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #000000 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #00000055 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #000000 25%, #343434 25%) 0px 0/ 20px 20px; */
+}
+
+.banner__top > .material-symbols-outlined {
+    font-size: 5rem;
+    color: white;
+}
+
+.banner__search__title {
+    font-weight: 300;
+    color: white;
+}
+
+.banner__search__bar {
+    /* Dimension */
+    height: 2rem;
+    width: 70%;
+    padding: 0.5rem;
+
+    /* Styling */
+    border-radius: 5px;
+    box-shadow: 0 0 5rem rgba(0, 0, 0, 0.1);
+    font-family: var(--font-default);
+    font-size: 1rem;
+    text-indent: 0.5rem;
+    outline: none;
+    border: none;
+}
+
+/* Article list */
+main {
+    /* Dimension */
+    width: 100%;
+    min-width: 300px;
+    margin-top: 3rem;
+
+    /* Position */
+    display: flex;
+    justify-content: center;
+}
+
+.list__articles {
+    /* Dimension */
+    width: 60vw;
+    min-width: 300px;
+
+    /* Position */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list__articles__content {
+    /* Dimension */
+    width: 100%;
+    aspect-ratio: 7/1;
+
+    /* Position */
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "image title"
+    "image desc";
+    gap: 1rem;
+
+    /* Styling */
+    font-family: var(--font-default);
+}
+
+.article__image {
+    /* Dimension */
+    height: 100%;
+    width: 100%;
+    max-height: 25vh;
+    aspect-ratio: 2/1;
+
+    /* Position */
+    grid-area: image;
+    
+    /* Styling */
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.article__title {
+    margin: 0;
+    grid-area: title;
+    font-size: 1.4rem;
+}
+
+.article__title > a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.1s ease;
+}
+
+.article__title > a:hover {
+    color: var(--color-theme-red);
+}
+
+.article__desc {
+    /* Dimension */
+    margin: 0;
+
+    /* Position */
+    grid-area: desc;
+
+    /* Styling */
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-theme-red);
+}
+
+.list__pagination {
+    /* Dimension */
+    margin-bottom: 1rem;
+    height: max-content;
+    width: fit-content;
+
+    /* Position */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    /* Styling */
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-default);
+    font-size: 1.5rem;
+    overflow: hidden;
+}
+
+.number__pagination {
+    padding: 1rem;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: var(--color-theme-red);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.number__pagination:hover {
+    filter: brightness(0.8);
+}
+
+.number__pagination.active {
+    background-color: var(--color-theme-red);
+    color: white;
+}

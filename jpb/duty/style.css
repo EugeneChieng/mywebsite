@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;600;700;800&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+:root {
+    --dimen-nav-height: 70px;
+    --dimen-nav-wrapper-height: 5px; /* Height of nav bottom border */
+    --dimen-banner-height: 250px;
+    --dimen-dipartition-height: clamp(75px, 15vh, 150px); /* Height of visi misi */
+    --dimen-font-banner-top-content: clamp(0.75rem, 1.5vw, 1.6rem); /* Font size of top banner content */
+    --dimen-banner-top-content-width: clamp(55%, 0.55vw, 70%);
+
+    --layer-background-ineligible: 10;
+    --layer-foreground-main: 20;
+    --layer-foreground-super: 99;
+
+    --font-default: 'Noto Sans';
+
+    --color-theme-red: #da3a3a;
+    --color-theme-blue: #0093dd;
+    --color-theme-yellow: #f8c301;
+
+    --color-title-feed: #dcdcdc;
+
+    --orientation-orgchart-display: row;
+}
+
+#HYP > g, #RLHC > g {
+    color: #B9B9B9;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+#HYP > g:hover, #RLHC > g:hover {
+    color: beige;
+}
+
+tspan {
+    font-family: var(--font-default);
+}
+
+.tooltip {
+    padding: 1rem;
+    position: absolute;
+    font-family: var(--font-default);
+    border-radius: 4px;
+    background-color: #333333;
+    color: white;
+    display: none;
+    opacity: 0.95;
+}
+
+.tooltip > * {
+    margin: 0;
+    font-weight: 300;
+}

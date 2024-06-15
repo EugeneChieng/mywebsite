@@ -110,7 +110,7 @@ body {
     position: relative;
 
     /* Styling */
-    background-image: url(./res/lembaga_logo.png);
+    background-image: url("./res/lembaga_logo.png");
     background-repeat: no-repeat;
     background-position: center left;
     background-position-x: 40px;

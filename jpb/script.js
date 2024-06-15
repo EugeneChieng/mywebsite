@@ -9,15 +9,15 @@ import { getDatabase, set, ref, get, child, onValue, update,remove, query, start
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA7lINH31--OI16ZGCSR_00yqNQzL3bV94",
-  authDomain: "juniorprefectorialboard.firebaseapp.com",
-  databaseURL: "https://juniorprefectorialboard-default-rtdb.firebaseio.com",
-  projectId: "juniorprefectorialboard",
-  storageBucket: "juniorprefectorialboard.appspot.com",
-  messagingSenderId: "671528022551",
-  appId: "1:671528022551:web:09441ea415b6484f706252",
-  measurementId: "G-YNQ48FDP91"
-};
+    apiKey: "AIzaSyA7lINH31--OI16ZGCSR_00yqNQzL3bV94",
+    authDomain: "juniorprefectorialboard.firebaseapp.com",
+    databaseURL: "https://juniorprefectorialboard-default-rtdb.firebaseio.com",
+    projectId: "juniorprefectorialboard",
+    storageBucket: "juniorprefectorialboard.appspot.com",
+    messagingSenderId: "671528022551",
+    appId: "1:671528022551:web:d33999891154fa2e706252",
+    measurementId: "G-EEY523JP5J"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

@@ -85,7 +85,7 @@ calendar_month
 
 function addReadMoreButton() {
       let readMoreButton = `
-      <button class="tripartition__about__loadmore" onclick="window.location.href='/feeds/'">
+      <button class="tripartition__about__loadmore" onclick="window.location.href='./feeds/'">
         <div class="tripartition__about__loadmore__circle">
           <span class="material-symbols-outlined">
               arrow_forward

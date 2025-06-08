@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIR Model</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  </head>
+  <body>
+    <div class="container" style="scale: 0.82;">
+      <label for="gamma" style="font-weight: bold;">gamma (recovery rate): </label>
+      <input
+        value="0.07142857142"
+        min="0"
+        max="1"
+        step="0.0001"
+        type="range"
+        name=""
+        id="gamma"
+        oninput="this.nextElementSibling.value = this.value; gamma = parseFloat(this.value)"
+      />
+      <output>0.0714</output>
+      <br />
+
+      <label for="rnought" style="font-weight: bold;">R_0: </label>
+      <input
+        value="3"
+        min="0"
+        max="50"
+        step="0.1"
+        type="range"
+        name=""
+        id="rnought"
+        oninput="this.nextElementSibling.value = this.value; R_0 = parseFloat(this.value);"
+      />
+      <output>3</output>
+      <br />
+
+      <label for="S_init" style="color: green; font-weight: bold;">S_init: </label>
+      <input
+        value="1000"
+        min="0"
+        max="10000"
+        type="range"
+        name=""
+        id="S_init"
+        oninput="this.nextElementSibling.value = this.value; S_init = parseInt(this.value);"
+      />
+      <output>1000</output>
+      <br />
+
+      <label for="I_init" style="color: red; font-weight: bold;">I_init: </label>
+      <input
+        value="1"
+        min="0"
+        max="10000"
+        type="range"
+        name=""
+        id="I_init"
+        oninput="this.nextElementSibling.value = this.value; I_init = parseInt(this.value);"
+      />
+      <output>1</output>
+      <br />
+
+      <label for="R_init" style="color: blue; font-weight: bold;">R_init: </label>
+      <input
+        value="0"
+        min="0"
+        max="10000"
+        type="range"
+        name=""
+        id="R_init"
+        oninput="this.nextElementSibling.value = this.value; R_init = parseInt(this.value);"
+      />
+      <output>0</output>
+
+      <button onclick="renderResult()">Compute</button>
+      <span style="font-weight: bold;">x-axis: time (days); y-axis: cases</span>
+      <br>
+      <span><span style="color: green">green: susceptible</span>; <span style="color: red">red: infected</span>; <span style="color: blue">blue: recovered</span></span>
+
+      <canvas id="graph"></canvas>
+    </div>
+
+    <script>
+      // const totalPointsRatio = 0.05
+      // const days = 365
+      // const totalDataPointsNeeded = days/totalPointsRatio
+      // const dt = days/totalDataPointsNeeded
+
+      // let xAxis = [0]
+      // for (let i=1; i < totalDataPointsNeeded; i++) {
+      //     xAxis.push(dt * i)
+      // }
+
+      // const S_init = 1000
+      // const I_init = 1
+      // const R_init = 0
+      // const beta = 0.3/totalDataPointsNeeded
+      // const gamma = 0.005
+
+      // let S = [S_init]
+      // let I = [I_init]
+      // let R = [R_init]
+
+      // function overallComputation() {
+      //     for (let i=1; i < totalDataPointsNeeded; i++) {
+      //         let S_new = calculateS(S[i-1], I[i-1])
+
+      //         let I_new = calculateI(S[i-1], I[i-1])
+
+      //         let R_new = calculateR(R[i-1], I[i-1])
+
+      //         S.push(S_new)
+      //         I.push(I_new)
+      //         R.push(R_new)
+      //     }
+
+      // }
+
+      // function calculateS(S_n, I_n) {
+      //     return S_n - (beta)*(I_n*S_n)*dt
+      // }
+
+      // function calculateI(S_n, I_n) {
+      //     return I_n + ((beta)*(I_n*S_n) - gamma*I_n)*dt
+      // }
+
+      // function calculateR(R_n, I_n) {
+      //     return R_n + gamma*I_n*dt
+      // }
+
+      // overallComputation()
+      
+      const totalPointsRatio = 0.05;
+      const days = 365;
+      const totalDataPointsNeeded = days / totalPointsRatio;
+      const dt = days / totalDataPointsNeeded;
+
+      let xAxis = [0];
+      for (let i = 1; i < totalDataPointsNeeded; i++) {
+        xAxis.push(dt * i);
+      }
+
+      let S_init = 1000;
+      let I_init = 1;
+      let R_init = 0;
+      let gamma = 1 / 14; // Recovery rate: 1 recovery every 14 days
+      let R_0 = 3;
+      let beta = (R_0 * gamma) / S_init; // For R_0 = 3
+
+      let S = [S_init];
+      let I = [I_init];
+      let R = [R_init];
+
+      function overallComputation() {
+        for (let i = 1; i < totalDataPointsNeeded; i++) {
+          let S_new = calculateS(S[i - 1], I[i - 1]);
+          let I_new = calculateI(S[i - 1], I[i - 1]);
+          let R_new = calculateR(R[i - 1], I[i - 1]);
+
+          S.push(S_new);
+          I.push(I_new);
+          R.push(R_new);
+        }
+      }
+
+      function calculateS(S_n, I_n) {
+        return S_n - beta * I_n * S_n * dt;
+      }
+
+      function calculateI(S_n, I_n) {
+        return I_n + (beta * I_n * S_n - gamma * I_n) * dt;
+      }
+
+      function calculateR(R_n, I_n) {
+        return R_n + gamma * I_n * dt;
+      }
+
+      overallComputation();
+
+      function displayGraph() {
+        new Chart("graph", {
+          type: "line",
+          data: {
+            labels: xAxis,
+            datasets: [
+              { data: S, borderColor: "green", fill: false },
+              { data: I, borderColor: "red", fill: false },
+              { data: R, borderColor: "blue", fill: false },
+            ],
+          },
+          options: { legend: { display: false } },
+        });
+        console.log(R_0)
+      }
+
+      displayGraph();
+
+      function renderResult() {
+        const canvas = document.getElementById('graph')
+        const context = canvas.getContext('2d');
+context.clearRect(0, 0, canvas.width, canvas.height);
+        S = [S_init];
+        I = [I_init];
+        R = [R_init];
+        beta = (R_0 * gamma) / S_init;
+        overallComputation()
+        displayGraph()
+      }
+    </script>
+  </body>
+</html>
